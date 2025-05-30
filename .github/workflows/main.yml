@@ -1,5 +1,5 @@
 
-name: bakagon
+name: TOOLBOXLAP
 
 on:
   workflow_dispatch:
@@ -24,13 +24,13 @@ jobs:
     - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "admin@123" -Force)
 
-    - name: bakagon
+    - name: www.toolboxlap.xyz
       env:
         PLAYIT_AUTH_KEY: ${{ secrets.PL }} 
       run: |
         Start-Process -FilePath "$env:USERPROFILE\playit.exe" -ArgumentList "--secret $env:PLAYIT_AUTH_KEY" -NoNewWindow -Wait
         Start-Process -FilePath "$env:USERPROFILE\playit.exe" -NoNewWindow
-    #  bakagon
+    #  www.toolboxlap.com
     # Prevent workflow to stop
     - name: Keep the GitHub Action Runner Alive
       run: |
